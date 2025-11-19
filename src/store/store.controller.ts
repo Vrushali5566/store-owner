@@ -6,3 +6,8 @@ async myStore(@Request() req) {
   const store = await this.storesService.findByOwner(ownerId);
   return store;
 }
+@Get('owner/average-rating')
+@Roles('owner')
+async averageRating(@Request() req) {
+  return await this.storesService.getStoreAverageRating(req.user.id);
+}
